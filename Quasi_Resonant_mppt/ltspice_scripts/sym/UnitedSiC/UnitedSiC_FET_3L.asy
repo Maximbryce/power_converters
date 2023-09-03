@@ -1,0 +1,28 @@
+Version 4
+SymbolType CELL
+LINE Normal 48 48 48 96
+LINE Normal 16 80 48 80
+LINE Normal 40 48 48 48
+LINE Normal 16 48 40 44
+LINE Normal 16 48 40 52
+LINE Normal 40 44 40 52
+LINE Normal 16 8 16 24
+LINE Normal 16 40 16 56
+LINE Normal 16 72 16 88
+LINE Normal 0 80 8 80
+LINE Normal 8 16 8 80
+LINE Normal 48 16 16 16
+LINE Normal 48 0 48 16
+WINDOW 0 80 32 Left 2
+WINDOW 3 80 64 Left 2
+SYMATTR Value Replace_With_UnitedSiC_FET_3L_Part_Name
+SYMATTR Prefix X
+PIN 48 0 LEFT 8
+PINATTR PinName nd
+PINATTR SpiceOrder 1
+PIN 0 80 RIGHT 8
+PINATTR PinName ng
+PINATTR SpiceOrder 2
+PIN 48 96 LEFT 8
+PINATTR PinName ns
+PINATTR SpiceOrder 3

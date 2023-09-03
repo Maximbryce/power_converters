@@ -1,0 +1,6 @@
+.step param SWFREQ list 120000.000000 130000.000000 
+.param DUTY_CYCLE 0.500000
+.param DEADTIME 0.000000
+.param Vin 50.000000
+.param Vout 100.000000
+.param Illum 900.000000

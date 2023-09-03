@@ -1,0 +1,194 @@
+
+**** 08/06/23 15:24:47 ****** PSpice 17.4.0 (19 May 2023) ***** ID# 0 ********
+
+ ** Profile: "SCHEMATIC1-test"  [ C:\SVP\Resonant\cadence_sim\resonant_converter-pspicefiles\schematic1\test.sim ] 
+
+
+ ****     CIRCUIT DESCRIPTION
+
+
+******************************************************************************
+
+
+
+
+** Creating circuit file "test.cir" 
+** WARNING: THIS AUTOMATICALLY GENERATED FILE MAY BE OVERWRITTEN BY SUBSEQUENT SIMULATIONS
+
+*Libraries: 
+* Profile Libraries :
+* Local Libraries :
+.LIB "C:/Cadence/SPB_17.4/tools/pspice/library/userlib/IRF135S203.lib" 
+* From [PSPICE NETLIST] section of C:\Users\maxim\AppData\Roaming\SPB_Data\cdssetup\OrCAD_PSpice\17.4.0\PSpice.ini file:
+.lib "nom.lib" 
+
+*Analysis directives: 
+.TRAN  0 10m 0 
+.OPTIONS ADVCONV
+.PROBE64 V(alias(*)) I(alias(*)) W(alias(*)) D(alias(*)) NOISE(alias(*)) 
+.INC "..\SCHEMATIC1.net" 
+
+
+
+**** INCLUDING SCHEMATIC1.net ****
+* source RESONANT_CONVERTER
+V_V2         N00744 0  
++PULSE 0 14 0 10n 10n 5u 10u
+V_V3         N00588 0 10Vdc
+L_L1         N00150 N01363  10uH  
+C_C1         0 N01363  10u  TC=0,0 
+R_R1         0 N01363  1 TC=0,0 
+X_U1         N00588 N00744 N00150 IRF135B203
+X_U2         N00150 0 0 IRF135B203
+
+**** RESUMING test.cir ****
+.END
+
+**** 08/06/23 15:24:47 ****** PSpice 17.4.0 (19 May 2023) ***** ID# 0 ********
+
+ ** Profile: "SCHEMATIC1-test"  [ C:\SVP\Resonant\cadence_sim\resonant_converter-pspicefiles\schematic1\test.sim ] 
+
+
+ ****     Diode MODEL PARAMETERS
+
+
+******************************************************************************
+
+
+
+
+               X_U1.MD         X_U1.MD1        X_U1.MD2        X_U1.MD3        
+          IS   61.466200E-12    0             100.000000E-12  100.000000E-12 
+           N    1.10534        50                .4              .4          
+          BV  135                                                            
+         IBV  250.000000E-06                                                 
+          RS    1.143710E-03                    3.000000E-06                 
+          TT  100.000000E-09                                                 
+         CJO    9.362210E-09    3.806780E-09                                 
+          VJ     .5              .5                                          
+           M     .770156         .9                                          
+          FC     .1            10.000000E-09                                 
+          EG    1                                                            
+         XTI    1                                                            
+
+
+               X_U2.MD         X_U2.MD1        X_U2.MD2        X_U2.MD3        
+          IS   61.466200E-12    0             100.000000E-12  100.000000E-12 
+           N    1.10534        50                .4              .4          
+          BV  135                                                            
+         IBV  250.000000E-06                                                 
+          RS    1.143710E-03                    3.000000E-06                 
+          TT  100.000000E-09                                                 
+         CJO    9.362210E-09    3.806780E-09                                 
+          VJ     .5              .5                                          
+           M     .770156         .9                                          
+          FC     .1            10.000000E-09                                 
+          EG    1                                                            
+         XTI    1                                                            
+
+
+**** 08/06/23 15:24:47 ****** PSpice 17.4.0 (19 May 2023) ***** ID# 0 ********
+
+ ** Profile: "SCHEMATIC1-test"  [ C:\SVP\Resonant\cadence_sim\resonant_converter-pspicefiles\schematic1\test.sim ] 
+
+
+ ****     MOSFET MODEL PARAMETERS
+
+
+******************************************************************************
+
+
+
+
+               X_U1.MM         X_U2.MM         
+               NMOS            NMOS            
+       LEVEL    1               1            
+           L  100.000000E-06  100.000000E-06 
+           W  100.000000E-06  100.000000E-06 
+         VTO    3.84068         3.84068      
+          KP  591.451         591.451        
+       GAMMA    0               0            
+         PHI     .6              .6          
+      LAMBDA     .072596         .072596     
+          IS    0               0            
+          JS    0               0            
+          PB     .8              .8          
+        PBSW     .8              .8          
+          CJ    0               0            
+        CJSW    0               0            
+        CGSO   98.427800E-06   98.427800E-06 
+        CGDO    1.824160E-06    1.824160E-06 
+        CGBO    0               0            
+         TOX    0               0            
+          XJ    0               0            
+       UCRIT   10.000000E+03   10.000000E+03 
+      DIOMOD    1               1            
+         VFB    0               0            
+        LETA    0               0            
+        WETA    0               0            
+          U0    0               0            
+        TEMP    0               0            
+         VDD    5               5            
+       XPART    0               0            
+
+
+**** 08/06/23 15:24:47 ****** PSpice 17.4.0 (19 May 2023) ***** ID# 0 ********
+
+ ** Profile: "SCHEMATIC1-test"  [ C:\SVP\Resonant\cadence_sim\resonant_converter-pspicefiles\schematic1\test.sim ] 
+
+
+ ****     INITIAL TRANSIENT SOLUTION       TEMPERATURE =   27.000 DEG C
+
+
+******************************************************************************
+
+
+
+ NODE   VOLTAGE     NODE   VOLTAGE     NODE   VOLTAGE     NODE   VOLTAGE
+
+
+(N00150) 333.4E-09 (N00588)   10.0000 (N00744)    0.0000 (N01363) 333.4E-09     
+
+(X_U1.4)    0.0000 (X_U1.5)   10.0000 (X_U1.6)   10.0000 (X_U1.7) 64.53E-12     
+
+(X_U1.8) 333.4E-09 (X_U1.9)   10.0000 (X_U2.4)    0.0000 (X_U2.5) 333.4E-09     
+
+(X_U2.6) 333.4E-09 (X_U2.7) 2.151E-18 (X_U2.8) 592.3E-24 (X_U2.9) 333.4E-09     
+
+(X_U1.10)   10.0000                   (X_U1.11)   10.0000                       
+
+(X_U2.10) 333.4E-09                   (X_U2.11) 333.4E-09                   
+
+
+
+
+    VOLTAGE SOURCE CURRENTS
+    NAME         CURRENT
+
+    V_V2         3.000E-11
+    V_V3        -3.334E-07
+    X_U1.VFI2    1.000E-11
+    X_U1.VFI1    0.000E+00
+    X_U2.VFI2    3.334E-19
+    X_U2.VFI1    0.000E+00
+
+    TOTAL POWER DISSIPATION   3.33E-06  WATTS
+
+
+
+          JOB CONCLUDED
+
+**** 08/06/23 15:24:47 ****** PSpice 17.4.0 (19 May 2023) ***** ID# 0 ********
+
+ ** Profile: "SCHEMATIC1-test"  [ C:\SVP\Resonant\cadence_sim\resonant_converter-pspicefiles\schematic1\test.sim ] 
+
+
+ ****     JOB STATISTICS SUMMARY
+
+
+******************************************************************************
+
+
+
+  Total job time (using Solver 1)   =       27.55
+

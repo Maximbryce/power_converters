@@ -1,0 +1,7 @@
+.param SWFREQ 123k
+.param DUTY_CYCLE 0.5
+.param DEADTIME 150n
+.param Vin 115
+.param Vout 24
+.param Io 1
+.param RL = Vout/Io

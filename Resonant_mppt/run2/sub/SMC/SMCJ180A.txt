@@ -1,0 +1,20 @@
+**********
+* Littelfuse, LP
+* TVS Diode SPICE Models
+* SMCJxxxA Family
+*
+* T. Chenoski
+* Irving Technical Center
+* 
+* v2 04/23/08
+*
+**********
+**********
+
+.SUBCKT SMCJ180A     1   2
+*       TERMINALS:   A   K
+Done    1            3   Dtvs
+Dtwo    3            2   Dtvs
+Rleak   1            2   360meg
+.MODEL  Dtvs         D   (IS=1.0e-5 RS=5.5196 N=1.5 IBV=10m BV=180 CJO=900p)
+.ENDS

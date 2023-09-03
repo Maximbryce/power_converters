@@ -1,0 +1,9 @@
+.param SWFREQ 80k
+.param DUTY_CYCLE 0.5
+.param DEADTIME 20n
+.param Vin 70
+.param Vout 130
+.param Illum 900
+.param Lr 10u
+.param Cr 0.5n
+.param Ii 2  

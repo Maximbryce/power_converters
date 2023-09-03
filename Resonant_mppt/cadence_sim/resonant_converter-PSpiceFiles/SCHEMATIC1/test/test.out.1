@@ -1,0 +1,51 @@
+
+**** 08/05/23 15:19:58 ****** PSpice 17.4.0 (19 May 2023) ***** ID# 0 ********
+
+ ** Profile: "SCHEMATIC1-test"  [ C:\SVP\Resonant\cadence_sim\resonant_converter-pspicefiles\schematic1\test.sim ] 
+
+
+ ****     CIRCUIT DESCRIPTION
+
+
+******************************************************************************
+
+
+
+
+** Creating circuit file "test.cir" 
+** WARNING: THIS AUTOMATICALLY GENERATED FILE MAY BE OVERWRITTEN BY SUBSEQUENT SIMULATIONS
+
+*Libraries: 
+* Profile Libraries :
+* Local Libraries :
+* From [PSPICE NETLIST] section of C:\Users\maxim\AppData\Roaming\SPB_Data\cdssetup\OrCAD_PSpice\17.4.0\PSpice.ini file:
+.lib "nom.lib" 
+
+*Analysis directives: 
+.TRAN  0 10m 0 
+.OPTIONS ADVCONV
+.PROBE64 V(alias(*)) I(alias(*)) W(alias(*)) D(alias(*)) NOISE(alias(*)) 
+.INC "..\SCHEMATIC1.net" 
+
+
+
+**** INCLUDING SCHEMATIC1.net ****
+* source RESONANT_CONVERTER
+R_R1         N00141 0  1k TC=0,0 
+V_V2         N00141 0  
++PULSE 0 10 0 10n 10n 5u 10u
+X_U1         N00588 N00141 0 IRF135B203
+V_V3         N00590 N00141 5Vdc
+R_R2         N00590 N00588  1k TC=0,0 
+
+**** RESUMING test.cir ****
+.END
+
+WARNING(ORPSIM-15246): Library index file nom.ind does not have the correct format
+
+INFO(ORPSIM-15422): Making new index file nom.ind for library file nom.lib.
+
+Index has 34696 entries from 212 file(s).
+
+ERROR(ORPSIM-15108): Subcircuit IRF135B203 used by X_U1 is undefined
+

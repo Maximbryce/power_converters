@@ -1,0 +1,11 @@
+*.fft
+*.log
+*.raw
+*.asv
+*.emf
+*.autosave
+*.net
+*.original
+*.r2022a
+*.slxc
+/Simulink_Models/slprj

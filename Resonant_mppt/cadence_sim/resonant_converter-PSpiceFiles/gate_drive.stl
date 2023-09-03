@@ -1,0 +1,13 @@
+* C:\SVP\Resonant\cadence_sim\resonant_converter-PSpiceFiles\gate_drive.stl written on Sat Aug  5 20:55:51 2023
+* by Stimulus Editor -- Serial Number: -65536 -- Version 17.4.0
+;!Stimulus Get
+;! Vdrive- Analog
+;!Ok
+;!Plot Axis_Settings
+;!Xrange 0s 30us
+;!Yrange 0 15
+;!AutoUniverse
+;!XminRes 1ns
+;!YminRes 1n
+;!Ok
+.STIMULUS Vdrive- PULSE( 0 13 0 10n 10n 5u 10u )

@@ -1,0 +1,139 @@
+component irf135b203
+% irf135b203
+% Component automatically generated from a SPICE netlist for subcircuit IRF135B203.
+%   MATLAB version: 9.13.
+%   Simscape Electrical version: 7.8.
+%   Simscape code generated on: 06-Aug-2023 16:40:44
+
+
+    nodes
+        node_1 = foundation.electrical.electrical; % node_1
+        node_2 = foundation.electrical.electrical; % node_2
+        node_3 = foundation.electrical.electrical; % node_3
+    end
+
+    nodes(Access=protected, ExternalAccess=none)
+        node_9 = foundation.electrical.electrical;
+        node_7 = foundation.electrical.electrical;
+        node_8 = foundation.electrical.electrical;
+        node_4 = foundation.electrical.electrical;
+        node_5 = foundation.electrical.electrical;
+        node_10 = foundation.electrical.electrical;
+        node_11 = foundation.electrical.electrical;
+        node_6 = foundation.electrical.electrical;
+    end
+
+    annotations
+        UILayout = [
+            UIGroup('Parasitic elements', ...
+                    specifyParasiticValues, capacitorSeriesResistance)
+                   ]
+    end
+
+    parameters
+        specifyParasiticValues = ee.enum.include.no;    % Specify parasitic values
+    end
+
+    parameters(ExternalAccess=none)
+        capacitorSeriesResistance = {0, 'Ohm'};    % Capacitor parasitic series resistance
+    end
+
+    if specifyParasiticValues == ee.enum.include.yes
+        annotations
+            [capacitorSeriesResistance] : ExternalAccess=modify;
+        end
+    end
+
+    variables
+        FI2 = {value={0,'A'},priority=priority.none};
+        EV16 = {value={0,'A'},priority=priority.none};
+        FI1 = {value={0,'A'},priority=priority.none};
+    end
+
+    components(ExternalAccess=observe)
+        M1 = ee.additional.spice_semiconductors.spice_nmos(AD={0,'m^2'},AS={0,'m^2'},CBD={0,'F'},CBS={0,'F'}, ...
+            CGBO={0,'F/m'},CGDO={1.8242e-06,'F/m'},CGSO={9.8428e-05,'F/m'},CJ={0,'F/m^2'},CJSW={0,'F/m'},DELTA={0,'1'}, ...
+            ETA={0,'1'},FC={0.5,'1'},GAMMA={nan,'V^0.5'},IS={1e-32,'A'},JS={0,'A/m^2'},KAPPA={0.2,'1'},KP={591.451,'A/V^2'}, ...
+            LAMBDA={0.072596,'1/V'},LD={0,'m'},LENGTH={(100*1e-06),'m'},LEVEL={1,'1'},SCALE={1,'1'},MJ={0.5,'1'}, ...
+            MJSW={0.33,'1'},N={1,'1'},NEFF={1,'1'},NFS={0,'1/cm^2'},NSS={nan,'1/cm^2'},NSUB={nan,'1/cm^3'},NRD={0,'1'}, ...
+            NRS={0,'1'},PB={0.8,'V'},PD={0,'m'},PHI={nan,'V'},PS={0,'m'},RD={nan,'Ohm'},RS={nan,'Ohm'},RSH={nan,'Ohm'}, ...
+            THETA={0,'1/V'},TOX={nan,'m'},TPG={1,'1'},UCRIT={10000,'V/cm'},UEXP={0,'1'},U0={600,'cm^2/(V*s)'},VMAX={0,'m/s'}, ...
+            VTO={3.8407,'V'},XJ={0,'m'},WIDTH={(100*1e-06),'m'},Ci_param={1,'1'},Cov_param=2,C_param=2);
+        RS = foundation.electrical.elements.resistor(R={0.00177661,'Ohm'});
+        D1 = ee.additional.spice_semiconductors.spice_diode(AREA={1,'m^2'},SCALE={1,'1'},IS={6.1466e-11,'A/m^2'}, ...
+            IKF={Inf,'A/m^2'},ISR={0,'A/m^2'},N={1.1053,'1'},NR={2,'1'},M={0.77016,'1'},VJ={0.5,'V'},RS={0.0011437,'Ohm*m^2'}, ...
+            C_param={2,'1'},CJO={9.3622e-09,'F/m^2'},FC={0.1,'1'},TT={1e-07,'s'},RevBrk={2,'1'},BV={135,'V'},IBV={0.00025,'A/m^2'}, ...
+            IBVL={1e-10,'A/m^2'},NBV={1,'1'},NBVL={1,'1'},XTI={1,'1'},EG={1,'eV'},TIKF={0,'K^-1'},TRS1={0,'K^-1'}, ...
+            TRS2={0,'K^-2'},TBV1={0,'K^-1'},TBV2={0,'K^-2'});
+        RDS = foundation.electrical.elements.resistor(R={3e+07,'Ohm'});
+        RD = foundation.electrical.elements.resistor(R={0.00472735,'Ohm'});
+        RG = foundation.electrical.elements.resistor(R={2.15094,'Ohm'});
+        D2 = ee.additional.spice_semiconductors.spice_diode(AREA={1,'m^2'},SCALE={1,'1'},IS={1e-32,'A/m^2'},IKF={Inf,'A/m^2'}, ...
+            ISR={0,'A/m^2'},N={50,'1'},NR={2,'1'},M={0.9,'1'},VJ={0.5,'V'},RS={1e-12,'Ohm*m^2'},C_param={2,'1'},CJO={3.8068e-09,'F/m^2'}, ...
+            FC={1e-08,'1'},TT={0,'s'},RevBrk={2,'1'},BV={Inf,'V'},IBV={1e-10,'A/m^2'},IBVL={1e-10,'A/m^2'},NBV={1,'1'}, ...
+            NBVL={1,'1'},XTI={3,'1'},EG={1.11,'eV'},TIKF={0,'K^-1'},TRS1={0,'K^-1'},TRS2={0,'K^-2'},TBV1={0,'K^-1'}, ...
+            TBV2={0,'K^-2'});
+        D3 = ee.additional.spice_semiconductors.spice_diode(AREA={1,'m^2'},SCALE={1,'1'},IS={1e-10,'A/m^2'},IKF={Inf,'A/m^2'}, ...
+            ISR={0,'A/m^2'},N={0.4,'1'},NR={2,'1'},M={0.5,'1'},VJ={1,'V'},RS={3e-06,'Ohm*m^2'},C_param={2,'1'},CJO={0,'F/m^2'}, ...
+            FC={0.5,'1'},TT={0,'s'},RevBrk={2,'1'},BV={Inf,'V'},IBV={1e-10,'A/m^2'},IBVL={1e-10,'A/m^2'},NBV={1,'1'}, ...
+            NBVL={1,'1'},XTI={3,'1'},EG={1.11,'eV'},TIKF={0,'K^-1'},TRS1={0,'K^-1'},TRS2={0,'K^-2'},TBV1={0,'K^-1'}, ...
+            TBV2={0,'K^-2'});
+        RL = foundation.electrical.elements.resistor(R={1,'Ohm'});
+        VFI2 = ee.sources.voltage_source(dc_voltage={0,'V'});
+        CAP = foundation.electrical.elements.capacitor(c={5.48516e-09,'F'},r=capacitorSeriesResistance,g={0,'1/Ohm'}, ...
+            vc.priority=priority.none);
+        VFI1 = ee.sources.voltage_source(dc_voltage={0,'V'});
+        RCAP = foundation.electrical.elements.resistor(R={1,'Ohm'});
+        D4 = ee.additional.spice_semiconductors.spice_diode(AREA={1,'m^2'},SCALE={1,'1'},IS={1e-10,'A/m^2'},IKF={Inf,'A/m^2'}, ...
+            ISR={0,'A/m^2'},N={0.4,'1'},NR={2,'1'},M={0.5,'1'},VJ={1,'V'},RS={1e-12,'Ohm*m^2'},C_param={2,'1'},CJO={0,'F/m^2'}, ...
+            FC={0.5,'1'},TT={0,'s'},RevBrk={2,'1'},BV={Inf,'V'},IBV={1e-10,'A/m^2'},IBVL={1e-10,'A/m^2'},NBV={1,'1'}, ...
+            NBVL={1,'1'},XTI={3,'1'},EG={1.11,'eV'},TIKF={0,'K^-1'},TRS1={0,'K^-1'},TRS2={0,'K^-2'},TBV1={0,'K^-1'}, ...
+            TBV2={0,'K^-2'});
+    end
+
+    connections
+        connect(M1.dx,node_9);
+        connect(M1.gx,node_7);
+        connect(M1.sx,node_8);
+        connect(M1.bx,node_8);
+        connect(RS.p,node_8);
+        connect(RS.n,node_3);
+        connect(D1.p,node_3);
+        connect(D1.n,node_1);
+        connect(RDS.p,node_3);
+        connect(RDS.n,node_1);
+        connect(RD.p,node_9);
+        connect(RD.n,node_1);
+        connect(RG.p,node_2);
+        connect(RG.n,node_7);
+        connect(D2.p,node_4);
+        connect(D2.n,node_5);
+        connect(D3.p,*);
+        connect(D3.n,node_5);
+        connect(RL.p,node_5);
+        connect(RL.n,node_10);
+        connect(VFI2.p,node_4);
+        connect(VFI2.n,*);
+        connect(CAP.p,node_11);
+        connect(CAP.n,node_10);
+        connect(VFI1.p,node_11);
+        connect(VFI1.n,node_6);
+        connect(RCAP.p,node_6);
+        connect(RCAP.n,node_10);
+        connect(D4.p,*);
+        connect(D4.n,node_6);
+    end
+
+    branches
+        FI2: node_7.i -> node_9.i;
+        EV16: node_10.i -> *;
+        FI1: node_7.i -> node_9.i;
+    end
+
+    equations
+        value(FI2,'A') == (-1)*value(VFI2.i,'A');
+        value(node_10.v,'V') == (1)*value(node_9.v-node_7.v,'V');
+        value(FI1,'A') == (-1)*value(VFI1.i,'A');
+    end
+
+end

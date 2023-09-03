@@ -1,0 +1,24 @@
+Version 4
+SymbolType CELL
+LINE Normal 16 16 16 80
+LINE Normal 48 72 48 96
+LINE Normal 16 72 48 72
+LINE Normal 48 24 48 0
+LINE Normal 16 24 48 24
+LINE Normal 0 64 4 64
+LINE Normal 4 68 16 64
+LINE Normal 4 60 16 64
+LINE Normal 4 60 4 68
+WINDOW 0 56 32 Left 2
+WINDOW 3 56 72 Left 2
+SYMATTR Value Replace_With_UnitedSiC_JFET_Part_Name
+SYMATTR Prefix X
+PIN 48 0 LEFT 8
+PINATTR PinName nd
+PINATTR SpiceOrder 1
+PIN 0 64 RIGHT 8
+PINATTR PinName ng
+PINATTR SpiceOrder 2
+PIN 48 96 LEFT 8
+PINATTR PinName ns
+PINATTR SpiceOrder 3
