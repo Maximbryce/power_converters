@@ -1,0 +1,13 @@
+.param SWFREQ 71.57k
+.param DUTY_CYCLE 0.5
+.param DEADTIME 200n
+.param Vin 130
+.param Vout 24
+.param Io 1
+.param RL Vout/Io
+.param Cr 241n
+.param Lr 4.67u
+.param Lm 46.7u
+.param n 4
+.param Lt_pri 1
+.param Lt_sec Lt_pri/n/n

@@ -3,7 +3,7 @@ file_name = 'params.csv';
 [~,~,params] = xlsread('params.csv');
 table_size = size(params);
 
-ltspice_asc_file_name = 'resonant_full_bridge_ln_5_solar';
+ltspice_asc_file_name = 'QRS-boost-aux-switch';
 
 num_variables = table_size(2);
 num_steps = table_size(1) - 1; 
@@ -17,10 +17,11 @@ results = table;
 
 %% Do the runs
 for step_num = 1:num_steps
+    disp(['Trial: ', num2str(step_num), '/' , num2str(num_steps)])
     step_params(step_num, params, num_variables);
-    dos('run_ltspice.bat');
+    dos('start .\ltspice.exe.lnk -b -Run D:\power_converters\Quasi_Resonant_mppt\ltspice_scripts\QRS-boost-aux-switch.asc');
     [~,tasks] = system('tasklist');
-    while(contains(tasks, 'LTspice.exe')) % Keep waiting till the simulation is done
+    while(contains(tasks, 'XVIIx86.exe')) % Keep waiting till the simulation is done
         [~,tasks] = system('tasklist');
         pause(2);
     end
@@ -51,36 +52,27 @@ end
 
 function results = get_results_from_sim(name, params, step_num)
     raw_data = LTspice2Matlab(strcat(name, '.raw'));
-    %M1_power = get_component_power_trace(raw_data, 'V(vin+)', 'V(vc+)', 'I(V1)');
-    %M1_power = trim_signal(M1_power, 3e-3, 3e-3 + 1/(120e+3)*4);
-    %plot(M1_power.time, abs(M1_power.trace))
 
-    mosfet_losses = get_mosfet_losses(raw_data);
-    diode_losses = get_diode_losses(raw_data);
+    power_mosfet_losses = get_component_average_power(raw_data, 'V(vc)', 'g', 'I(V2)');
+    power_diode_losses = get_component_average_power(raw_data, 'V(vout+)', 'V(vc)', 'I(D1)');
+    aux_mosfet_losses = get_component_average_power(raw_data, 'V(aux)', 'g', 'I(V1)');
+    aux_diode_losses = get_component_average_power(raw_data, 'V(vout+)', 'V(aux)', 'I(D2)');
 
-    result_names = ["mosfet_losses", "diode_losses"];
+    output_power = get_component_average_power(raw_data, 'V(vout+)', 'g', 'I(V6)');
+    input_power = get_component_average_power(raw_data, 'V(vin+)', 'g', 'I(R6)');
+
+    input_voltage = get_avg_trace(raw_data, 'V(vin+)');
+    input_current = get_avg_trace(raw_data, 'I(R6)');
+
+    input_pk_pk_voltage = get_pk_pk_trace(raw_data, 'V(vin+)');
+    input_pk_pk_current = get_pk_pk_trace(raw_data, 'I(R6)');
+
+    efficiency = output_power/input_power;
+
+    result_names = ["Step Num", "Acheived Avg Vin","pk-pk ripple Vin","Avg Iin", "pk-pk ripple Iin", "power_mosfet_losses", "power_diode_losses", "aux_mosfet_losses", "aux_diode_losses", "Pin", "Pout", "Eff"];
     var_names = [result_names, params(1,:)];
-    values = [mosfet_losses, diode_losses, params(1+step_num,:)];
-    results = array2table(values,'VariableNames', var_names);
-end
-
-
-function mosfet_losses = get_mosfet_losses(raw_data)
-    M2_average_power = get_component_average_power(raw_data, 'V(vin+)', 'V(vc+)', 'I(V1)');
-    M3_average_power = get_component_average_power(raw_data, 'V(vin+)', 'V(vc-)', 'I(V7)');
-    M1_average_power = get_component_average_power(raw_data, 'V(vc+)', 'g', 'I(V9)');
-    M4_average_power = get_component_average_power(raw_data, 'V(vc-)', 'g', 'I(V8)');
-    
-    mosfet_losses = M2_average_power + M3_average_power + M1_average_power + M4_average_power;
-end
-
-function diode_losses = get_diode_losses(raw_data)
-    D2_average_power = get_component_average_power(raw_data, 'V(vsec+)', 'V(vout+)', 'I(D2)');
-    D3_average_power = get_component_average_power(raw_data, 'V(vsec+)', 'V(vout-)', 'I(D3)');
-    D4_average_power = get_component_average_power(raw_data, 'V(vout+)', 'g', 'I(D4)');
-    D1_average_power = get_component_average_power(raw_data, 'V(vout-)', 'g', 'I(D1)');
-    
-    diode_losses = D2_average_power + D3_average_power + D4_average_power + D1_average_power;
+    var_values = [step_num, input_voltage, input_pk_pk_voltage, input_current, input_pk_pk_current, power_mosfet_losses, power_diode_losses, aux_mosfet_losses, aux_diode_losses, input_power, output_power, efficiency, params(1+step_num,:)];
+    results = array2table(var_values,'VariableNames', var_names);
 end
 
 function trimmed_signal = trim_signal(signal, time_start, time_stop)
@@ -116,6 +108,31 @@ function power = get_component_power_trace(raw_data, upper_voltage_net, lower_vo
         power.time = raw_data.time_vect;
         power.trace = (upper_voltage.trace - lower_voltage.trace) .*current.trace;
     end
+end
+
+function avg_data = get_avg_trace(raw_data, trace_name)
+    data = get_trace(raw_data, trace_name);
+
+    total_value = trapz(data.time, abs(data.trace));
+    total_time = data.time(end) - data.time(1);
+
+    avg_data = total_value/total_time;
+end
+
+function max_data = get_max_trace(raw_data, trace_name)
+    data = get_trace(raw_data, trace_name);
+    max_data = max(data.trace);
+end
+
+function min_data = get_min_trace(raw_data, trace_name)
+    data = get_trace(raw_data, trace_name);
+    min_data = min(data.trace);
+end
+
+function pk_pk_data = get_pk_pk_trace(raw_data, trace_name)
+    min = get_min_trace(raw_data, trace_name);
+    max = get_max_trace(raw_data, trace_name);
+    pk_pk_data = max-min;
 end
 
 function data = get_trace(raw_data, trace_name)

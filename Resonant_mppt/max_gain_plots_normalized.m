@@ -1,6 +1,5 @@
 close all;
 
-gain_bound_calc;
 calcs_and_helpers;
 
 Wn_trials = logspace(-3 , 3, 1000);

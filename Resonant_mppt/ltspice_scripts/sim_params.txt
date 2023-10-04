@@ -1,4 +1,4 @@
-.param SWFREQ 110k
+.param SWFREQ 53k
 .param DUTY_CYCLE 0.5
 .param DEADTIME 300n
 .param Vin 70

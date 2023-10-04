@@ -1,0 +1,9 @@
+.param SWFREQ 80k
+.param DEADTIME 20n
+.param Lr 10u
+.param Cr 0.5n
+.param Ii 2
+.param target_vin 30
+.param solar_voc 40
+.param Vout 150
+.param Illum 300

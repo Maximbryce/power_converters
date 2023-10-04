@@ -14,10 +14,13 @@ Iin_max = 6;
 
 Rl_min_max_gain = 142;
 
+gain_max = Vout_max/ Vin_min;
+gain_min = Vout_min/ Vin_max;
+
 max_input_power = Vin_max*Iin_max;
 
 fs = 150e+3;
-n = 4;
+n = 2;
 
 H_max = H_back_calc(Vin_min, Vout_max, n);
 H_min = H_back_calc(Vin_max, Vout_min, n);

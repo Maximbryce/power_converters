@@ -3,8 +3,8 @@ requirements;
 calcs_and_helpers;
 
 % Chosen based on prev scripts
-Qe_max = 0.404; % The min Q needed for the max gain in this design
-Ln = 1.5;
+Qe_max = 0.1212/2; % The min Q needed for the max gain in this design
+Ln = 10;
 
 RL_range = [25, 30, 35, 45, 50, 60, 70, 100, 120, 200, 300, 400];%linspace(25, 500, 20);
 Re_min_max_gain_rpi = Rpri_from_sec((8/(pi*pi) * Rl_min_max_gain), n);
@@ -32,6 +32,10 @@ for RL = RL_range
     semilogx(Wn_trials*(fr2), gain);
     plot_labels = [plot_labels sprintf('RL= %f, Iin= %f, min Vin = %f', RL, Iin, min_Vin)];
 end
+
+yline(gain_max);
+yline(gain_min);
+
 
 legend(plot_labels);
 ylim([0 3]);

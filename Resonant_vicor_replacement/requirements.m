@@ -16,7 +16,7 @@ Rl_min_max_gain = Vout_nom / Iout_max;
 max_output_power = Vout_max*Iout_max;
 
 fs = 150e+3;
-n = 1/3.3;
+n = 1/5.3;
 
 H_max = H_back_calc(Vin_min, Vout_max, n);
 H_min = H_back_calc(Vin_max, Vout_min, n);

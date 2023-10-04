@@ -3,8 +3,11 @@ requirements;
 calcs_and_helpers;
 
 % Chosen based on prev scripts
-Qe_max = 0.606; % The min Q needed for the max gain in this design
-Ln = 1.5;
+% Qe_max = 0.606; % The min Q needed for the max gain in this design
+% Ln = 1.5;
+
+Qe_max = 0.10101; % The min Q needed for the max gain in this design
+Ln = 10;
 
 Io_range = [0.5, 1, 4, 6, 10];%linspace(25, 500, 20);
 Re_min_max_gain_rpi = Rpri_from_sec((8/(pi*pi) * Rl_min_max_gain), n);

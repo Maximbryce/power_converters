@@ -1,7 +1,13 @@
-.param SWFREQ 123k
+.param SWFREQ 47.42k
 .param DUTY_CYCLE 0.5
-.param DEADTIME 150n
-.param Vin 115
+.param DEADTIME 200n
+.param Vin 130
 .param Vout 24
-.param Io 1
-.param RL = Vout/Io
+.param Io 5
+.param RL Vout/Io
+.param Cr 192.48n
+.param Lr 5.8566u
+.param Lm 58.566u
+.param n 5.3
+.param Lt_pri 0.5
+.param Lt_sec Lt_pri/n/n
